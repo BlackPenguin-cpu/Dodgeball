@@ -16,22 +16,12 @@ namespace Managers
             PhotonNetwork.ConnectUsingSettings();
         }
 
-        private void Start()
-        {
-            OnConnectedToMaster();
-        }
-
-        public override void OnJoinedLobby()
+        public override void OnJoinedRoom()
         {
             var randX = Random.Range(-5f, 5f);
             var randY = Random.Range(-5f, 5f);
             playerObj = PhotonNetwork.Instantiate($"{NetworkUtil.NETWORK_PREFAB_PATH}{PLAYER_OBJ_NAME}",
                 new Vector3(randX, randY), Quaternion.identity);
-        }
-
-        public void PressStartButton()
-        {
-            OnConnectedToMaster();
         }
 
         public override void OnConnectedToMaster() =>
